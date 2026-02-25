@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="We propose a modular incremental dense 3D reconstruction method for UAV imagery with plug-and-play Visual Geometry Transformer models">
+    <meta property="og:title" content="Modular Incremental Dense 3D Reconstruction from UAV Imagery with Plug-and-Play Visual Geometry Transformer Models"/>
+    <meta property="og:description" content="We propose a modular incremental dense 3D reconstruction method for UAV imagery with plug-and-play Visual Geometry Transformer models"/>
+    <meta property="og:url" content="https://henrik-jia.github.io/Drone-VGGT/"/>
+    <meta property="og:image" content="static/images/pipline.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="500"/>
+
+    <meta name="twitter:title" content="Drone-VGGT: Modular Incremental Dense 3D Reconstruction">
+    <meta name="twitter:description" content="Plug-and-Play Visual Geometry Transformer Models for UAV Dense Reconstruction">
+    <meta name="twitter:image" content="static/images/pipline.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="keywords" content="UAV, Dense 3D Reconstruction, Visual Geometry Transformer, VGGT, FastVGGT, MapAnything, Incremental Reconstruction, 3DGS, DSM">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Drone-VGGT: Modular Incremental Dense 3D Reconstruction from UAV Imagery</title>
+    <!-- <link rel="icon" type="image/x-icon" href="static/images/favicon.ico"> -->
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="static/css/bulma.min.css">
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+    <script defer src="static/js/fontawesome.all.min.js"></script>
+    <script src="static/js/bulma-carousel.min.js"></script>
+    <script src="static/js/bulma-slider.min.js"></script>
+    <script src="static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered">
+                <div class="column has-text-centered">
+                    <h1 class="title is-1 publication-title">Modular Incremental Dense 3D Reconstruction from UAV Imagery with Plug-and-Play Visual Geometry Transformer Models</h1>
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">Zhihao Jia,</span>
+                        <span class="author-block">Yulin Ding,</span>
+                        <span class="author-block">Han Hu<sup>*</sup></span>
+                    </div>
+
+                    <div class="is-size-5 publication-authors">
+                        <span class="author-block">Faculty of Geosciences and Engineering, Southwest Jiaotong University, Chengdu, PR China</span>
+                        <span class="eql-cntrb"><small><br><sup>*</sup>Corresponding author</small></span>
+                    </div>
+
+                    <div class="column has-text-centered">
+                        <div class="publication-links">
+                            <span class="link-block">
+                                <a href="static/pdfs/paper.pdf" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                                    <span>Paper</span>
+                                </a>
+                            </span>
+                            <span class="link-block">
+                                <a href="https://github.com/Henrik-JIA/Drone-VGGT" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                                    <span class="icon"><i class="fab fa-github"></i></span>
+                                    <span>Code</span>
+                                </a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Teaser Image-->
+<section class="hero teaser">
+    <div class="container is-max-desktop">
+        <div class="hero-body">
+            <img src="static/images/pipline.jpg" alt="Overview of the proposed incremental dense 3D reconstruction pipeline"/>
+            <h2 class="subtitle has-text-centered">
+                Overview of the proposed incremental dense 3D reconstruction pipeline. The system processes UAV images sequentially through preprocessing, neural network inference, batch reconstruction, and confidence-based fusion stages. The modular architecture supports plug-and-play integration of different Visual Geometry Transformer models (VGGT, FastVGGT, MapAnything).
+            </h2>
+        </div>
+    </div>
+</section>
+
+<!-- Paper abstract -->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+                <h2 class="title is-3">Abstract</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        Conventional UAV photogrammetry pipelines rely on sparse feature matching and Multi-View Stereo algorithms for dense reconstruction, typically requiring high image overlap ratios along with substantial post-processing computational overhead. This work proposes an incremental dense 3D reconstruction method based on the visual geometry grounded transformer model, which enables end-to-end inference of dense point clouds and camera poses directly from UAV imagery, thereby circumventing the constraints of the traditional "sparse-to-dense" two-stage reconstruction paradigm. Leveraging the global perception capability of the Transformer architecture, the proposed method achieves robust reconstruction under reduced overlap ratios and sparser camera viewpoints, effectively lowering data acquisition costs. A sliding window mechanism is employed to process image sequences in successive batches, facilitating 3D reconstruction concurrent with image acquisition. To address the multi-batch point cloud fusion challenge in incremental processing, a confidence-guided fusion strategy is designed that utilizes pixel-level confidence weights to resolve conflicts in overlapping regions while ensuring geometric continuity. The modular architecture of the proposed method allows seamless plug-and-play integration of different Visual Geometry Transformer models without requiring architectural modifications. Furthermore, the framework integrates GPS metadata for automatic georeferencing, supports direct generation of DSM from dense point clouds, and exports reconstruction results in a COLMAP-compatible format for seamless application to neural rendering techniques such as 3DGS, thus providing a streamlined data pathway for high-quality novel view synthesis and scene visualization.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Key Features -->
+<section class="section hero is-small">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column is-full">
+                <h2 class="title is-3">Key Features</h2>
+                <div class="content">
+                    <ul>
+                        <li>🚀 <strong>Incremental Processing</strong>: Frame-by-frame image processing with real-time reconstruction updates</li>
+                        <li>🧠 <strong>Multi-Model Support</strong>: Plug-and-play integration of VGGT, FastVGGT, and MapAnything models</li>
+                        <li>🔗 <strong>Confidence-based Fusion</strong>: Intelligent point cloud merging with pixel-level confidence weights</li>
+                        <li>🌍 <strong>Georeferencing Export</strong>: Automatic UTM zone detection with multi-coordinate system support</li>
+                        <li>👁️ <strong>Real-time Visualization</strong>: Viser-based 3D point cloud and camera pose visualization</li>
+                        <li>📊 <strong>3DGS Compatible</strong>: COLMAP-format output for 3D Gaussian Splatting training</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Results Carousel -->
+<section class="hero is-small">
+    <div class="hero-body">
+        <div class="container">
+            <h2 class="title is-3">Output Products</h2>
+            <div id="results-carousel" class="carousel results-carousel">
+                <div class="item">
+                    <img src="static/images/output_products.jpg" alt="Output Products Overview"/>
+                    <h2 class="subtitle has-text-centered">Output products: (a) Dense point cloud, (b) DSM, (c) Contour lines, (d) Hillshade, (e) 3DGS novel view</h2>
+                </div>
+                <div class="item">
+                    <img src="static/images/experiment_data_Ganluo_point_cloud.jpg" alt="Terrain Dense Point Cloud"/>
+                    <h2 class="subtitle has-text-centered">Terrain Dataset: Dense Point Cloud after incremental inference and fusion</h2>
+                </div>
+                <div class="item">
+                    <img src="static/images/experiment_data_Ganluo_dsm.jpg" alt="Terrain Digital Surface Model"/>
+                    <h2 class="subtitle has-text-centered">Terrain Dataset: Digital Surface Model (DSM) derived from the dense point cloud</h2>
+                </div>
+                <div class="item">
+                    <img src="static/images/experiment_data_Ganluo_3DGS.jpg" alt="Terrain 3D Gaussian Splatting"/>
+                    <h2 class="subtitle has-text-centered">Terrain Dataset: Novel view rendered by the trained 3D Gaussian Splatting model</h2>
+                </div>
+                <div class="item">
+                    <img src="static/images/experiment_data_building_point_cloud.jpg" alt="Building Dense Point Cloud"/>
+                    <h2 class="subtitle has-text-centered">Building Dataset: Dense Point Cloud after incremental inference and fusion</h2>
+                </div>
+                <div class="item">
+                    <img src="static/images/experiment_data_building_dsm.jpg" alt="Building Digital Surface Model"/>
+                    <h2 class="subtitle has-text-centered">Building Dataset: Digital Surface Model (DSM) derived from the dense point cloud</h2>
+                </div>
+                <div class="item">
+                    <img src="static/images/experiment_data_building_3DGS.jpg" alt="Building 3D Gaussian Splatting"/>
+                    <h2 class="subtitle has-text-centered">Building Dataset: Novel view rendered by the trained 3D Gaussian Splatting model</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Experimental Results -->
+<section class="section hero is-light">
+    <div class="container is-max-desktop">
+        <div class="columns is-centered">
+            <div class="column is-full">
+                <h2 class="title is-3">Experimental Results</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        Three state-of-the-art Visual Geometry Transformer models (VGGT, FastVGGT, and MapAnything) are systematically evaluated on terrain and building datasets. For geometric consistency, VGGT achieves the best alignment accuracy on terrain data with RMS error of 16.61m under confidence-based merging, while FastVGGT performs best on building data with 4.07m. The confidence-based merging strategy consistently outperforms points-only merging by effectively suppressing noise from uncertain depth estimates. For novel view synthesis quality, VGGT-based dense reconstruction significantly outperforms traditional SfM sparse reconstruction when used as initialization for 3D Gaussian Splatting training, achieving substantially higher PSNR, SSIM, and lower LPIPS scores across both datasets without relying on densification post-processing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--BibTex citation -->
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{jia2025dronevggt,
+  title={Modular Incremental Dense 3D Reconstruction from UAV Imagery with Plug-and-Play Visual Geometry Transformer Models},
+  author={Jia, Zhihao and Ding, Yulin and Hu, Han},
+  journal={},
+  year={2025},
+  url={https://github.com/Henrik-JIA/Drone-VGGT}
+}</code></pre>
+    </div>
+</section>
+
+<footer class="footer">
+    <div class="container">
+        <div class="columns is-centered">
+            <div class="column is-8">
+                <div class="content">
+                    <p>
+                        This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a>.
+                        This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
