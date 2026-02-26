@@ -288,7 +288,7 @@ body {
 }
 
 .dataset-result-item {
-  background: var(--background-primary);
+  background: #ffffff;
   border-radius: var(--border-radius-lg);
   box-shadow: var(--shadow-md);
   padding: 1rem;
@@ -308,6 +308,7 @@ body {
   object-fit: contain;
   border-radius: var(--border-radius);
   margin-bottom: 0.75rem;
+  background: #ffffff;
 }
 
 .dataset-result-item p {
