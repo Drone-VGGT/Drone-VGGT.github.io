@@ -309,6 +309,8 @@ body {
   border-radius: var(--border-radius);
   margin-bottom: 0.75rem;
   background: #ffffff;
+  border: 2px solid #ffffff;
+  box-shadow: none;
 }
 
 .dataset-result-item p {
